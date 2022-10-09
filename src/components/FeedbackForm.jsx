@@ -35,7 +35,7 @@ const Message = styled.div`
 function FeedbackForm({addFeedback}) {
 
     const [text, setText] = useState("")
-    const [rating, setRating] = useState(10)
+    const [rating, setRating] = useState()
     const [isDisabled, setIsDisabled] = useState(true)
     const [message, setMessage] = useState("")
 
