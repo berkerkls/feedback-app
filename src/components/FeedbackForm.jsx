@@ -3,6 +3,7 @@ import { useState } from 'react'
 import styled from 'styled-components'
 import Card from "../shared/Card"
 import Button from "../shared/Button"
+import RatingSelect from './RatingSelect'
 
 const InputForm= styled.form`
     display: flex;
@@ -31,9 +32,10 @@ const Message = styled.div`
 `
 
 
-function FeedbackForm() {
+function FeedbackForm({addFeedback}) {
 
     const [text, setText] = useState("")
+    const [rating, setRating] = useState(10)
     const [isDisabled, setIsDisabled] = useState(true)
     const [message, setMessage] = useState("")
 
@@ -52,11 +54,26 @@ function FeedbackForm() {
         }
     }
 
+    const handleSubmit = (e) => {
+        e.preventDefault()
+
+        if(text.trim().length > 10 ) {
+            const newFeedback = {
+                text,
+                rating,
+            }
+
+            addFeedback(newFeedback)
+            setText("")
+        }
+    }
+
 
   return (
     <Card>
         <Header>How would you rate your service with us?</Header>
-        <InputForm>
+        <RatingSelect select={(rating) => setRating(rating)}/>
+        <InputForm onSubmit={handleSubmit}>
             <InputPart>
                 <Input onChange={handleInputChange} type="text" placeholder="Enter your feedback" value={text} />
                 <Button type="submit" version="secondary" isDisabled={isDisabled}>Send</Button>

@@ -2,7 +2,7 @@ import React from 'react'
 import styled from "styled-components"
 
 const NavText = styled.h2`
-    color: lightcyan;
+    color: #444;
 `
 
 const Container = styled.div`
