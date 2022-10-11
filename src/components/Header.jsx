@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 import styled from "styled-components"
 
 const NavText = styled.h2`
@@ -25,7 +26,9 @@ function Header({text}) {
   return (
     <Navbar>
         <Container>
-            <NavText>{text}</NavText>
+            <NavLink to="/" style={{textDecoration:"none"}}>
+                <NavText>{text}</NavText>
+            </NavLink>
         </Container>
     </Navbar>
   )
