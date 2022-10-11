@@ -1,6 +1,6 @@
 import React from 'react'
 import Card from '../shared/Card'
-import { FaTimes } from "react-icons/fa"
+import { FaEdit, FaTimes } from "react-icons/fa"
 import styled from 'styled-components'
 import FeedbackContext from '../context/FeedbackContext'
 import { useContext } from 'react'
@@ -18,7 +18,7 @@ const CloseButton = styled.button`
 
 function FeedbackItem({item}) {
 
-  const {deleteFeedback} = useContext(FeedbackContext)
+  const {deleteFeedback, editFeedback} = useContext(FeedbackContext)
 
   return (
     <Card >
@@ -26,6 +26,9 @@ function FeedbackItem({item}) {
         <CloseButton onClick={() => deleteFeedback(item.id)}>
           <FaTimes color='orange' />
         </CloseButton>
+        <button className='edit'>
+          <FaEdit onClick={() => editFeedback(item)} color='orange'/>
+        </button>
         <div className='text-display'>{item.text}</div>
     </Card>
   )

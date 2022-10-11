@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react'
 import styled from 'styled-components'
 import Card from "../shared/Card"
@@ -36,12 +36,21 @@ const Message = styled.div`
 
 function FeedbackForm() {
 
-    const {addFeedback} = useContext(FeedbackContext)
+    const {addFeedback, feedbackEdit, updateFeedback} = useContext(FeedbackContext)
 
     const [text, setText] = useState("")
     const [rating, setRating] = useState()
     const [isDisabled, setIsDisabled] = useState(true)
     const [message, setMessage] = useState("")
+
+
+    useEffect(() => {
+        if(feedbackEdit.edit === true) {
+            setIsDisabled(false)
+            setText(feedbackEdit.item.text)
+            setRating(feedbackEdit.item.rating)
+        }
+    },[feedbackEdit])
 
     const handleInputChange = (e) => {
         setText(e.target.value)
@@ -67,7 +76,11 @@ function FeedbackForm() {
                 rating,
             }
 
-            addFeedback(newFeedback)
+            if(feedbackEdit.edit === true) {
+                updateFeedback(feedbackEdit.item.id,newFeedback)
+            }else {
+                addFeedback(newFeedback)
+            }
             setText("")
         }
     }
