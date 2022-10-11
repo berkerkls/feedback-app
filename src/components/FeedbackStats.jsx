@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
+import FeedbackContext from "../context/FeedbackContext"
 
 
 const FeedbackStatsDiv = styled.div`
@@ -14,7 +15,9 @@ const LengthFeedback = styled.h4``
 const AverageRating = styled.h4``
 
 
-function FeedbackStats({ feedback }) {
+function FeedbackStats() {
+
+  const {feedback} = useContext(FeedbackContext)
 
     let average = feedback.reduce((prev, curr) => {
         return prev + curr.rating

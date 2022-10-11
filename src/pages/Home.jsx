@@ -18,26 +18,18 @@ const Link = styled.div`
 export default function Home() {
     const [feedback, setFeedback] = useState(FeedbackData)
 
-  const addFeedback = (newFeedback) => {
-    newFeedback.id = uuidv4()
-    setFeedback([newFeedback,...feedback])
+  
 
-  }
-
-  const deleteFeedback=(id) => {
-    if(window.confirm("Are you sure you want to delete this?")) {
-      setFeedback(feedback.filter((item) => item.id != id))
-    }
-  }
+  
 
   return (
     <div className='container'>
           <Link>
             <NavLink to="/about" style={{textDecoration:"none",color:"#ffaa77"}}>About Us</NavLink>
           </Link>
-          <FeedbackForm addFeedback={addFeedback} />
-          <FeedbackStats feedback={feedback} />
-          <FeedbackList feedback={feedback} handleDelete={deleteFeedback} />
+          <FeedbackForm  />
+          <FeedbackStats />
+          <FeedbackList />
     </div>
   )
 }

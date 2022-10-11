@@ -4,6 +4,8 @@ import styled from 'styled-components'
 import Card from "../shared/Card"
 import Button from "../shared/Button"
 import RatingSelect from './RatingSelect'
+import { useContext } from 'react'
+import FeedbackContext from '../context/FeedbackContext'
 
 const InputForm= styled.form`
     display: flex;
@@ -32,7 +34,9 @@ const Message = styled.div`
 `
 
 
-function FeedbackForm({addFeedback}) {
+function FeedbackForm() {
+
+    const {addFeedback} = useContext(FeedbackContext)
 
     const [text, setText] = useState("")
     const [rating, setRating] = useState()
