@@ -6,6 +6,7 @@
 
 #### How I practice the Hooks
 - In this project I learnt the usage of useState, useContext and useEffects. Also practiced usage of React Router.
-- I used useState to take my state and use as the data.
-- I used useEffect to render the page again when there is a change in my editFeedback state. 
-- I use creatContext and useContext to not write the props and function in every line, in this way my code looks neater and easy to read.
+- I practiced useState to take my state and use as the data.
+- I practiced useEffect to render the page again when there is a change in my editFeedback state. 
+- I practiced creatContext and useContext to not write the props and function in every line, in this way my code looks neater and easy to read.
+- I practiced json-server service and GET POST PUT and DELETE methods fetching the APIs.
